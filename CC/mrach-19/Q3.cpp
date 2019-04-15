@@ -36,6 +36,7 @@ int main(){
 		int arr[n] = {0};
 		
 
+
 		for(int i = 0; i < n; i++){
 			string s;
 			cin >> s;
@@ -48,18 +49,18 @@ int main(){
 		}
 
 
-		int p=0,res[(n*(n-1))/2];
+		int num;//p=0,res[(n*(n-1))/2];
 		long long int ginti = 0;
 
 		for(int i = 0 ; i < n;i++){
 
 			for(int j = i+1; j< n;j++){
-				res[p] = arr[i] + arr[j];
+				num = arr[i] + arr[j];
 
-				if(res[p] == 11111)ginti++;
-				else if(res[p] > 11111) ginti += funny(res[p]);
+				if(num == 11111)ginti++;
+				else if(num > 11111) ginti += funny(num);
 				
-				p++;
+				
 			}
 
 		}
