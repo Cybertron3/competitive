@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 #define SPEED ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 #define ll long long
 #define sd(x) scanf("%d",&x)
@@ -8,16 +9,26 @@ using namespace std;
 #define pld(x) printf("%lld\n",x)
 #define pd(x) printf("%d\n",x)
 
+
 int main(){
+    	
+    int n; sd(n);
 
-	int a ,b, c;
-//	cin >> a >> b >> c;
-sd(a); sd(b); sd(c);
-	
-	char *s; scanf("%s",s);
+    int arr[n];
 
-	printf("%d",a+b+c); printf(" %s\n",s);
+    for(int i = 0; i< n ; i++){
+    	sd(arr[i]);
 
+    }
 
-	return 0;
+  //  sort(arr ,arr+n);
+
+  	ll sum = arr[0] + arr[1] + arr[2];
+
+  	for(int i = 3 ;i < n ; i++){
+  		if
+  	}
+
+    
+    return 0;
 }
