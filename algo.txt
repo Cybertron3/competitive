@@ -1,0 +1,5 @@
+DFS
+BFS
+matching brackets // stacks
+hash tables 
+variable / pointers manupulation /// 

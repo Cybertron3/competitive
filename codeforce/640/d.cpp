@@ -1,0 +1,82 @@
+//PLUS ULTRA
+//one who sits atop all the clans : Lion's Sin Escanor 
+
+#include<bits/stdc++.h>
+using namespace std;
+     
+     
+#define SPEED ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define pb push_back 
+#define forn(i,st,n) for(int i = st; i < n ; i++)
+#define nfor(i,st,n) for(int i = st; i >= n ; i--)
+#define ss second
+#define ff first
+#define ll long long 
+
+typedef pair <int , int> pii;
+
+const int N = 1e5 + 10 , mod =  1000000007;
+
+void solve(){
+
+    int n; cin >> n;
+    int arr[n];
+    for(int i = 0; i<n ; i++)
+        cin >> arr[i];
+
+    ll sum1  = arr[0] , sum2 = 0;
+
+    ll a = 0, b = 0;
+
+    a = arr[0];
+
+    int idxa = 0 , idxb = n; 
+    int turn = 2, move = 1;
+    while(idxa + 1 < idxb ){
+    	if(turn == 2){
+    		move++;
+    		for(idxb-- ; idxb >= 0 && idxb >  idxa; idxb--){
+    			b += arr[idxb];
+    			sum2+= arr[idxb];
+
+    			if(b > a){
+    				a = 0;
+    				turn = 1;
+    				break;
+    			}
+    		}
+    	}else{
+    		move++;
+    		for(idxa++ ; idxa < n && idxa < idxb ; idxa++){
+    			a += arr[idxa];
+    			sum1 += arr[idxa];
+
+    			if(a > b){
+    				b = 0;
+    				turn = 2;
+    				break;
+    			}
+    		}
+    	}
+    }
+    
+    cout << move << " " << sum1 << " " << sum2 << "\n";
+    
+        
+
+
+}
+
+int main(){
+    SPEED;
+
+    int t; cin >> t;
+    while(t--) solve();
+
+
+
+
+    return 0;
+}
+      
+       

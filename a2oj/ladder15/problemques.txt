@@ -1,0 +1,4 @@
+Question 20 : No clue
+Question 21 : jab conection nhi hai toh kisi ek ko dusra ka koi bhi ek 				  lang sikha rhe hai par agar kisi ko nhi aae koi lang wo 				  case ko handle nhi kiya
+Question 30 : how to calculate longest increasing subsequence 
+Question 33: what happens when all values are equal , eg. 8 8 8 8
