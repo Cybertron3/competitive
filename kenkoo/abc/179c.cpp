@@ -1,3 +1,7 @@
+
+// read editorial
+// OP solution
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -36,7 +40,7 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 2e5 + 10 , mod =  1000000007;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
@@ -45,15 +49,17 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    int n , i = 1; cin >> n;
+    ll ans = 0;
+    while (n > i) {
+
+        // cout << n << "\n";
+        ans += ((n - 1) / i );
+        i++;
+
     }
-    
 
-
+    cout << ans << "\n";
 
 }
 
@@ -61,10 +67,10 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
 
 
     // time_t start , end;
@@ -72,7 +78,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

@@ -36,22 +36,42 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 2e5 + 10 , mod =  1000000007;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+int fun(string str , int i , int sum , int ans) {
+    if (sum != 0 && sum % 3 == 0)return ans;
+    if (i == sz(str))return 50;
+
+    return  min(fun(str , i + 1 , sum , ans) , fun(str , i + 1 , sum - (str[i] - '0') , ans + 1)  );
+
+}
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    string str; cin >> str;
+    int n = sz(str);
+
+    int sum = 0;
+    FOR(i, 0, n) {
+        sum += (str[i] - '0');
+
     }
-    
+
+    // cout << sum << "\n";
+
+    int ans =  fun(str , 0 , sum , 0) ;
+    if (ans == 50)ans = -1;
+    cout << ans << "\n";
+    // cout << min (fun(str , 1 , sum - (str[0] - '0')) , fun(str , 1, sum (str[0] - '0')) );
+
+
+
+
+
 
 
 
@@ -61,10 +81,10 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
 
     // time_t start , end;
@@ -72,7 +92,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

@@ -45,14 +45,32 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
-    }
-    
+	int inp;
 
+    int n , m ; cin >> n >> m;
+    std::vector<int> arr(101 , 0);
+    
+    FOR(i,0,n){
+    	cin >> inp;
+    	arr[inp]++;
+    }
+
+    FOR(i,0,m){
+    	cin >> inp;
+    	arr[inp]++;
+    }
+
+    int ans = 0;
+
+    FOR(i,1,101){
+    	if(arr[i] > 1){
+    		// cout << i << " ";
+    		ans++;
+    	}
+    }
+    // cout << "\n";
+
+    cout << ans << "\n";
 
 
 }
@@ -62,8 +80,8 @@ int main() {
 
 
     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
     #endif
 
 

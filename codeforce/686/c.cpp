@@ -36,7 +36,7 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 2e5 + 10 , mod =  1000000007;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
@@ -52,7 +52,38 @@ void solve() {
         cin >> a;
     }
     
+    std::vector<char> freq(n+5 , 0);
 
+    FOR(i,0,n){
+        if(i < n && arr[i] == arr[i+1]){
+            freq[arr[i]]++;
+            while(i+1 < n && arr[i] == arr[i+1] ){
+                i++;
+            }
+        }else{
+            freq[arr[i]]++;
+        }
+        
+    }
+
+    int ans = n;
+    FOR(num,1,n+5){
+        if(num == arr[0] && num == arr[n-1]){
+            if(ans > freq[num]-1  ){
+                ans = freq[num] -1;
+            }
+        }else if(num == arr[0] || num == arr[n-1]){
+            if(ans > freq[num] ){
+                ans = freq[num];
+            }
+        }else if(freq[num] > 0){
+            if(ans > freq[num] + 1){
+                ans = freq[num] + 1;
+            }
+        }
+    }
+
+    cout << ans << "\n";
 
 
 }
@@ -60,12 +91,12 @@ void solve() {
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    /*
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    */
 
     // time_t start , end;
 

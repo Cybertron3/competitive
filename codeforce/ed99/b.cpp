@@ -36,7 +36,7 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 1e6 + 10 , mod =  1000000007;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
@@ -45,13 +45,32 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    int x ;
+    cin >> x;
+
+    if(x == 1){
+
     }
-    
+
+    int sum = 0 , steps = 0 , ans = x;
+
+    FOR(i,1,x+1){
+        sum += i;
+        steps++;
+        if(sum == x){
+            ans = steps;
+            break;
+        }else if(sum > x){
+            if(sum == x + 1)
+                ans = steps + 1;
+            else
+                ans =steps;
+            break;
+        }
+    }
+
+    cout << ans << "\n";
+
 
 
 
@@ -60,16 +79,26 @@ void solve() {
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    
 
     // time_t start , end;
 
     // time(&start);
+
+    // int dp[N];
+    // dp[1] = 1;
+    // for(int i = 1 , j = 2; i+j < N; i += j){
+
+    //     dp[i+j] = dp[i]+1;
+
+
+    //     j++;
+    // }
 
     int t = 1;
     cin >> t;

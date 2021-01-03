@@ -45,12 +45,15 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
+    int n = 262 * 4;
+    double sum = 0 , inp;
     
-    for(auto &a : arr){
-        cin >> a;
+    FOR(i,0,n){
+    	cin >> inp;
+    	sum += inp;
     }
+
+    cout << sum << "\n";
     
 
 
@@ -72,7 +75,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

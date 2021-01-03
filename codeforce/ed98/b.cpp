@@ -46,26 +46,72 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 void solve() {
 
     int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    std::vector<ll> arr(n);
+    FOR(i, 0, n)cin >> arr[i];
+
+    ll sum = 0 ;
+    int maxi = 0;
+
+    FOR(i, 0, n) {
+        sum += arr[i];
+        if (arr[i] > arr[maxi]) {
+            maxi = i;
+        }
+
     }
-    
+
+    ll ans = 0;
+
+    FOR(i, 0, n) {
+        if (i == maxi) {
+
+            continue;
+        }
+
+        ll tmp = (n - 1) * arr[maxi];
+
+        if (sum <= tmp) {
+            ans = max(ans , tmp - sum );
+        } else {
+            ll ext = cdiv(sum , (n - 1));
+            ext *= (n - 1);
+            ans = max(ans , ext - sum );
+        }
 
 
+
+    }
+
+    ll imax = 0;
+    FOR(i, 0, n) {
+        if (i == maxi) continue;
+        if (arr[i] >= imax ) {
+            imax = arr[i];
+        }
+    }
+
+    ll tmp = (n - 1) * imax;
+    if (sum <= tmp) {
+        ans = max(ans , tmp - sum );
+    } else {
+        ll ext = cdiv(sum , (n - 1));
+        ext *= (n - 1);
+        ans = max(ans , ext - sum );
+    }
+
+    cout << ans << "\n";
 
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    /*
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    */
 
     // time_t start , end;
 

@@ -45,14 +45,48 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
+    int n , x ; cin >> n >> x;
     std::vector<int> arr(n);
     
     for(auto &a : arr){
         cin >> a;
     }
-    
 
+    int steps = 0;
+
+    int idj = 0;
+
+
+    FOR(i,0,n-1){
+        if(arr[i] > arr[i+1]){
+
+            // if(arr[i+1] < x){
+            //     cout << "-1\n";
+            //     return;
+            // }
+
+            while(arr[idj] <= x ){
+                idj++;
+            }
+
+            while(idj <= i){
+                if(arr[idj] > x ){
+
+                    steps++;
+                    swap(arr[idj] , x);
+                }
+                idj++;
+            }
+
+            if(arr[i] > arr[i+1]){
+                cout << "-1\n";
+                return;
+            }
+
+        }
+    }
+    
+    cout << steps << "\n";
 
 
 }

@@ -42,15 +42,37 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+ll binomialCoeff(int n, int k) 
+{ 
+    ll C[n + 1][k + 1]; 
+    int i, j; 
+  
+    // Caculate value of Binomial Coefficient 
+    // in bottom up manner 
+    for (i = 0; i <= n; i++) 
+    { 
+        for (j = 0; j <= min(i, k); j++) 
+        { 
+            // Base Cases 
+            if (j == 0 || j == i) 
+                C[i][j] = 1; 
+  
+            // Calculate value using previously 
+            // stored values 
+            else
+                C[i][j] = C[i - 1][j - 1] + 
+                          C[i - 1][j]; 
+        } 
+    } 
+  
+    return C[n][k]; 
+} 
 
 void solve() {
 
     int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
-    }
+   	
+   	cout << binomialCoeff(n-1 , 11);
     
 
 
@@ -61,18 +83,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

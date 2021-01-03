@@ -1,0 +1,23 @@
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+
+int main(){
+	int i , n;
+    scanf("%d",&n);
+	int nums[n];
+    for(i=1;i<=n;i++){
+        scanf("%d",&nums[i]);
+    }
+    int c=0, res=1;
+	int P[n];
+    for(i=1;i<n;i++){
+        P[i]=nums[i+1]-nums[i];
+        if(i==1 || P[i]!=P[i-1])c=0;
+        c++;
+        res=max(res,c+1);
+    }
+    res=min(res,n);
+    printf("%d\n",res);
+   
+}

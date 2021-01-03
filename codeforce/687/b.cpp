@@ -45,27 +45,50 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
+    int n , k ; cin >> n >> k;
+    std::vector<int> arr(n) , freq(101 , 0);
     
     for(auto &a : arr){
         cin >> a;
+        freq[a]++;
     }
-    
+
+    // int maxi = 0;
+    // FOR(i,1,101){
+    //     if(freq[i] > freq[maxi] ){
+    //         maxi = i;
+    //     }
+    // }
+
+    int ans = n;
 
 
+
+    FOR(maxi,1,101){
+        int tmp = 0;
+        FOR(i,0,n){
+            if(arr[i]  != maxi){
+                tmp++;
+                i += k-1;
+            }
+        }
+
+        if(ans > tmp)ans = tmp;
+    }
+
+    cout << ans << "\n";
 
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    /*
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    */
 
     // time_t start , end;
 

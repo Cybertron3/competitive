@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sort">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/icpcprac/sort.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

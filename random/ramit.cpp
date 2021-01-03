@@ -44,43 +44,43 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 
 void solve() {
+    int inp;
 
-    int n ; cin >> n;
+    int n; cin >> n;
     std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    F0R(i, n) {
+        cin >> arr[i];
     }
-    
+
+
+
+
+
+
 
 
 
 }
 
+void fun(   vector<int>::iterator ptr) {
+    ptr++;
+
+
+    *ptr = 5;
+    return;
+}
+
 int main() {
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+    std::vector<int> v(5, 0);
+
+    fun(v.begin());
+
+    cout << v[1] << "\n";
 
 
-    // time_t start , end;
 
-    // time(&start);
-
-    int t = 1;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-
-
-    // time(&end);
-
-    // printf("time: %f", (double)end - start );
 
     return 0;
 }

@@ -51,6 +51,30 @@ void solve() {
     for(auto &a : arr){
         cin >> a;
     }
+
+    sor(arr);
+
+
+
+    FOR(i,1,n){
+    	if(arr[i] == arr[i-1]){
+    		while(i < n && arr[i] == arr[i-1]){
+    			i++;
+    		}
+    		i--;
+    		arr[i]++;
+    	}
+    }
+
+    set<int> S;
+
+    FOR(i,0,n){
+    	S.insert(arr[i]);
+    }
+
+    int ans = S.size();
+
+    cout << ans << "\n";
     
 
 
@@ -61,11 +85,12 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 

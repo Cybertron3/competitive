@@ -1,3 +1,7 @@
+
+// read editorial
+// OP solution
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -36,23 +40,55 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 2e5 + 10 , mod =  1000000007;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+ll moder(ll x) {
+    x = x % mod;
+    if (x < 0)x += mod;
+
+    return x;
+}
+
+ll power(ll x , int n) {
+    ll p = 1;
+    while (n--) {
+        p = (p * x) % mod;
+    }
+
+    return p;
+}
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    int  n; cin >> n;
+    if (n == 1) {
+        cout << "0\n";
+        return;
     }
-    
+    if (n == 2) {
+        cout << "2\n";
+        return;
+    }
 
+    // ll tot  = 1;
+
+    // FOR(i, 0, n) {
+    //     tot = (tot * 10) % mod;
+    // }
+
+    // ll both = 1;
+    // FOR(i, 0, n) {
+    //     both = (both * 8) % mod;
+
+    // }
+
+    // cout << moder(ans - tmp) << "\n";
+
+    cout << (moder( power(10 , n) -  (2 * power(9 , n)) % mod ) + power(8, n)) % mod  << "\n";
 
 
 }
@@ -61,10 +97,10 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
 
     // time_t start , end;
@@ -72,7 +108,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

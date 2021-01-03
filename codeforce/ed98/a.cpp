@@ -45,14 +45,18 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
-    }
-    
+    int x , y;
+    cin >> x >> y;
+    int ans = min(x , y);
+    x -= ans;
+    y -= ans;
 
+    ans *= 2;
+
+    if (x > 0)ans += (2 * (x - 1) + 1 );
+    if (y > 0)ans += (2 * (y - 1) + 1);
+
+    cout << ans << "\n";
 
 
 }
@@ -60,12 +64,12 @@ void solve() {
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    /*
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    */
 
     // time_t start , end;
 

@@ -42,6 +42,30 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+ll fun(ll x){
+	int cnt = 0  ;
+	ll tmp = x;
+	while(tmp > 0){
+		tmp/=2;
+		cnt++;
+	}
+
+	ll p= 1;
+	while(cnt--){
+		p*= 2;
+	}
+
+	return p/2;
+
+
+
+	// if(abs(p - x) < abs(p/2 - x)){
+	// 	return p;
+	// }else {
+	// 	return (p/2);
+	// }
+
+}
 
 void solve() {
 
@@ -51,6 +75,14 @@ void solve() {
     for(auto &a : arr){
         cin >> a;
     }
+
+
+
+    FOR(i,0,n){
+    	cout << fun(arr[i]) << " ";
+    }
+
+    cout << '\n';
     
 
 
@@ -61,11 +93,12 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 

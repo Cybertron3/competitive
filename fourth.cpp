@@ -42,18 +42,77 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+void fun(std::vector<int> grp[] , bool vis[] , int i , int &cnt ){
+	
+	vis[i] = true;
+	cnt++;
+
+	FOR(j , 0 , grp[i].size()){
+
+		if(!vis[grp[i][j]]){
+			fun(grp , vis , grp[i][j] , cnt );
+
+		}
+	}
+
+
+}
 
 void solve() {
 
     int n ; cin >> n;
-    std::vector<int> arr(n);
+    int arr[n][n];
+
+    std::vector<int> grp[n*n + 1];
+
+    FOR(i,0,n){
+    	FOR(j,0,n){
+    		cin >> arr[i][j];
+    	}
+    }
+
+    int k ; cin >> k;
+
+    bool vis[n*n + 1];
+    memset(vis , false , sizeof(vis));
+
     
-    for(auto &a : arr){
-        cin >> a;
+
+    FOR(i,0,n){
+    	FOR(j,0,n){
+    		if(i+1 < n && arr[i][j] == 1 && arr[i+1][j] == 1 ){
+    			grp[i*n + j].pb((i+1)*n + j);
+    			grp[(i+1)*n + j].pb(i*n + j);
+    		}
+    		if(j+1 < n && arr[i][j] == 1 && arr[i][j+1] == 1){
+    			grp[i*n + j].pb(i*n + j + 1);
+    			grp[i*n + j + 1].pb(i*n + j);
+    		}
+    		// if(i+1 < n && j + 1 < n && arr[i][j] == 1 && arr[i+1][j+1] == 1){
+    		// 	grp[i*n + j].pb((i+1)*n + j + 1);
+    		// 	grp[(i+1)*n + j + 1].pb(i*n + j);
+    		// }
+    	}
+    }
+
+    int cnt = 0;
+
+    FOR(i,0,n){
+    	FOR(j,0,n){
+    		if(!vis[i*n + j]){
+    			cnt = 0;
+    			fun(grp , vis , i*n + j , cnt);
+
+    			if(cnt == k){
+    				cout << i  << " " << j  << "\n";
+    				return;
+    			}
+    		}
+    	}
     }
     
 
-
+    cout << "-1 -1\n";
 
 }
 

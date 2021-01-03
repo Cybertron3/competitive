@@ -1,3 +1,7 @@
+
+// read editorial
+// OP solution
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -36,23 +40,54 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 2e5 + 10 , mod =  998244353;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+ll moder(ll x) {
+    x = x % mod;
+    if (x < 0)x += mod;
+
+    return x;
+}
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
-    }
-    
+    int n , k;
+    cin >> n >> k;
 
+    int l[k] , r[k];
+    FOR(i, 0, k) {
+        cin >> l[i] >> r[i];
+    }
+
+    ll dp[n + 1];
+    mem(dp , 0);
+    dp[1] = 1;
+
+    ll pre[n + 1];
+    mem(pre , 0);
+    pre[1] = dp[1];
+
+    FOR(i, 2, n + 1) {
+
+        FOR(j, 0, k) {
+
+            int ld = i - r[j];
+            int rd = i - l[j];
+            ld = max(ld , 0);
+            rd = max(rd , 0);
+
+            dp[i] = (dp[i] + (moder(pre[rd]  - pre[ld] ) + dp[ld] ) % mod ) % mod;
+
+        }
+
+        pre[i] = (pre[i - 1] + dp[i]) % mod;
+    }
+
+    cout << dp[n] << "\n";
 
 
 }
@@ -61,10 +96,10 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
 
     // time_t start , end;
@@ -72,7 +107,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

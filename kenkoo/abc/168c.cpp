@@ -42,30 +42,57 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+double Convert(double degree) 
+{ 
+    double pi = 3.14159265359; 
+    return (degree * (pi / 180)); 
+} 
+ 
 
 void solve() {
 
-    int n ; cin >> n;
-    std::vector<int> arr(n);
-    
-    for(auto &a : arr){
-        cin >> a;
+    int a , b , h , m;
+
+    double ans = 0.0;
+
+    int val = abs(h- m);
+    if(val > 6){
+        val = 12 -val;
+    }
+
+    if(a > b){
+        swap(a , b);
+    }
+
+    if(val == 0 ){
+        ans = b - a;
+
+    }else if(val == 6){
+        ans  = a + b;
+
+    }else if(val == 1 ){
+
+    }else if(val == 2){
+
+    }else if(val == 3){
+
     }
     
+    ans = sin(Convert(val*30));
 
-
+    
 
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
-
+    /*
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+        #endif
+    */
 
     // time_t start , end;
 
