@@ -42,23 +42,62 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+// struct node
+// {
+// 	int val;
+// 	struct node *left , *right;
+// };
+
+// struct node* createnode(int value){
+// 	struct node *tmp = (struct node*)malloc(sizeof(struct node*));
+// 	tmp->val = value;
+
+// 	return tmp;
+// }
+
+void fun(vector<int> arr , int depth[] , int st , int n , int val ){
+
+	if(st >= n)return;
+	int j = st;
+    FOR(i,st,n){
+    	if(arr[i] > arr[j]){
+    		j = i;
+    	}
+    }
+
+    depth[j] = val;
+
+    fun(arr , depth , st, j , val+1);
+    fun(arr , depth , j+1 , n , val+1);
+}
+
 
 void solve() {
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
+
+    int n ; cin >> n;
+    std::vector<int> arr(n);
+    
+    for(auto &a : arr){
+        cin >> a;
+    }
+    
+    // int j = 0;
+    // FOR(i,0,n){
+    // 	if(arr[i] > arr[j]){
+    // 		j = i;
+    // 	}
+    // }
+
+
+    int depth[n];
+    fun(arr , depth , 0 , n , 0);
+
     FOR(i,0,n){
-
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
-
+    	cout << depth[i] << " ";
     }
 
-    cout << ans << "\n";
-    
-
+    cout << "\n";
 
 
 }
@@ -67,18 +106,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

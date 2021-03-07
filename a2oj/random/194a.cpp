@@ -46,12 +46,27 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 void solve() {
 
     int n , k ; cin >> n >> k;
-    
-    int ans = k / 3;
 
-    cout << max(0 , n- ans) << "\n";
-    
+    if(k <= 2*n){
+    	k -= n;
 
+    	if(k <= 0){
+    		cout << 
+    	}
+
+    }
+    
+    k -= 2*n;
+
+    if(k > 0){
+    	if(k > n){
+    		cout << "0\n";
+    	}else{
+    		cout << n - k << "\n"; 
+    	}
+    	
+
+    }
 
 
 }

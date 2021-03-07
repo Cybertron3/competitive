@@ -18,12 +18,53 @@ const int N = 1e5 + 10 , mod =  1000000007;
 void solve(){
 
     int n; cin >> n;
-    std::vector<int> arr(n);
-    forn(i,0,n){
-        cin >> arr[i];
-        
-    }
     
+    int arr[n][n];
+
+    int win[n] , draw[n] , loss[n];
+
+    if(n % 2 == 0){
+        FOR(i,0,n)draw[i] = 1;
+    }
+
+    int tmp = (n-1) /2 ;
+
+    FOR(i,0,n){
+        loss[i] = tmp;
+        win[i] = tmp;
+    }
+
+    FOR(i,0,n){
+        FOR(j,i+1 ,n){
+            if(win[i] > 0  ){
+                arr[i][j] = 1;
+                arr[j][i] = -1;
+                win[i]--;
+                loss[j]--;
+            }else if(draw[i] > 0){
+                arr[i][j] = 0;
+                arr[j][i] = 0;
+                draw[i]--;
+                draw[j]--;
+            }else{
+                arr[i][j] = -1;
+                arr[j][i] = 1;
+                loss[i]--;
+                win[i]--;
+            }
+        }
+    }
+
+    FOR(i,0,n){
+        FOR(j,i+1,n){
+            cout << arr[i][j] << " ";
+        }
+    }
+
+    cout << "\n";
+
+    
+
 
 
     

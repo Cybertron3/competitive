@@ -42,23 +42,34 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+// int Count_pairs(int x , int N){
+//    int count = 0;
+//    int temp = N;
+//    int i = 1;
+
+//    set<int> sss;
+//    while(i <= N && sss.find(i) == sss.end()){
+//    		sss.insert(i);
+//       int j = x / temp;
+//       count += temp * (j - i + 1);
+//       i = j + 1;
+//       temp = x / i;
+
+//    }
+//    return count;
+// }
 
 void solve() {
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
-    FOR(i,0,n){
+    int x , y; cin >> x >> y;
 
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
+    ll ans = 0;
 
+    FOR(i,2,y+2){
+    	ans += (x / i);
     }
 
     cout << ans << "\n";
-    
-
 
 
 }
@@ -67,18 +78,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

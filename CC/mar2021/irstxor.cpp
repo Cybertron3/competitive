@@ -45,19 +45,53 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
-    FOR(i,0,n){
+    ll c; cin >> c;
 
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
+    // ll tmp = c; 
+    // int steps = 1;
+    // while(c){
+    // 	c /= 2;
+    // 	steps++;
+    // } 
+    // c = tmp;
 
+    // tmp = 1;
+    // while(steps--){
+    // 	tmp *= 2;
+    // }
+
+    int flag = 0;
+    ll one = 0 , two = 0 , p = 1 ;
+
+    vector<int> v; 
+    while(c){
+    	v.push_back(c%2);
+    	c /= 2;
+    	p *= 2;
     }
 
-    cout << ans << "\n";
-    
+    int n = v.size();
+    p /= 2;
+    for(int i = n-1; i >= 0; i--){
+
+    	if(v[i] == 0){
+    		one += p;
+    		two += p;
+    	}else {
+    		if(flag){
+    			one += p;
+    		}else{
+    			two += p;
+    		}
+    		flag++;
+    	}
+
+    	p /= 2;
+    	
+    }
+
+
+    cout << one*two << "\n";
 
 
 
@@ -67,18 +101,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

@@ -42,22 +42,30 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+// bool fun(int n , int x ){
+// 	if(x > n)return false;
+// 	if(x == n)return true;
+
+// 	return fun(n , x + 2021 ) || fun(n , x + 2020);
+
+
+// }
 
 void solve() {
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
+    int n ; cin >> n;
+
     FOR(i,0,n){
-
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
-
+    	if(i*2020 > n)break;
+    	if((n - i*2020) % 2021 == 0 ){
+    		cout << "YES\n";
+    		return;
+    	}
     }
-
-    cout << ans << "\n";
     
+   
+    	cout << "NO\n";
+  
 
 
 
@@ -67,18 +75,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

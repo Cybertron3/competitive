@@ -36,7 +36,7 @@ using pll = pair<ll, ll>;
 //arrays
 #define mem(x , y) memset(x , y , sizeof(x) )
 
-const int N = 1e5 + 10 , mod =  1000000007;
+const int N = 1e5 + 10 , mod =  1000000000;
 
 //helper funcs
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
@@ -45,21 +45,23 @@ ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b 
 
 void solve() {
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
-    FOR(i,0,n){
+    int n ; cin >> n;
+    ll b;
 
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
-
+    ll ans = 0 , c , tmp;
+    for(ll a = 3; a < 44725 ; a+= 2){
+    	b = (a*a) - 1;
+    	if(b%2 == 0 ){
+    		b = b/2;
+    		c = a*a + b*b;
+    		tmp = sqrt(c);
+    		if(b <= n && tmp*tmp == c  && tmp <= n  )ans++;
+    		else break;
+    	}
     }
-
-    cout << ans << "\n";
     
 
-
+    cout << ans << "\n";
 
 }
 
@@ -67,18 +69,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

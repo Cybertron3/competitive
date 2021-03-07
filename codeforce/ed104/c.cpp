@@ -42,23 +42,65 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+void solve(){
 
-void solve() {
+    int n; cin >> n;
+    
+    int arr[n][n];
 
-    int n = 224;
-    double sum = 30.5 , inp;
-    int ans = 0;
-    FOR(i,0,n){
+    int win[n] , draw[n] , loss[n];
 
-    	cin >> inp;
-    	if(inp > sum )ans++;
-        
-
+    memset(draw , 0 , sizeof(draw));
+    if(n % 2 == 0){
+        FOR(i,0,n)draw[i] = 1;
     }
 
-    cout << ans << "\n";
+    int tmp = (n-1) /2 ;
+
+    FOR(i,0,n){
+        loss[i] = tmp;
+        win[i] = tmp;
+    }
+
+    FOR(i,0,n){
+        FOR(j,i+1 ,n){
+            if(win[i] > 0  ){
+                arr[i][j] = 1;
+                arr[j][i] = -1;
+                win[i]--;
+                loss[j]--;
+            }else if(draw[i] > 0){
+                arr[i][j] = 0;
+                arr[j][i] = 0;
+                draw[i]--;
+                draw[j]--;
+            }else{
+                arr[i][j] = -1;
+                arr[j][i] = 1;
+                loss[i]--;
+                win[i]--;
+            }
+        }
+    }
+
+    FOR(i,0,n){
+        FOR(j,i+1,n){
+            cout << arr[i][j] << " ";
+        }
+    }
+
+    cout << "\n";
+
     
 
+
+
+    
+    
+
+    
+    
+        
 
 
 }
@@ -67,18 +109,19 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-    #endif
 
+
+    #ifndef ONLINE_JUDGE
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    #endif
 
     // time_t start , end;
 
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }
