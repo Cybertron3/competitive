@@ -43,49 +43,96 @@ ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b 
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
 
+void solve() {
 
-void solve(){
+    int r , c , x;
 
-    int a[3] , b[3];
+    int arr[r][c];
 
-    FOR(i,0,3){
-        cin >> a[i];
+    FOR(i,0,r){
+    	FOR(j,0,c){
+    		cin >> arr[i][j] ;
+    	}
     }
 
-    FOR(i,0,3)cin >> b[i];
+    int inp;
 
-    int n; cin >> n;
+    FOR(i,0,r){
+    	FOR(j,0,c){
+    		cin >> inp;
+    		arr[i][j]  -= inp;
+    	}
+    }
+
+    // int mini , tot = 0 ;
+
+    // int prec[r+1];
+
+   //  FOR(j,0,c){
+   //  	map<int , int> mpp;
+    	
+   //  	memset(prec, 0 , sizeof(prec) );
+   //  	FOR(i,0,x){
+   //  		mpp[arr[i][j]]++;
+   //  	}
+
+   //  	mini = mpp.begin()->first;
+   //  	prec[0] -= mini;
+   //  	prec[x] += mini;
+
+   //  	FOR(i,x,r){
+   //  		mpp[arr[i][j]]++;
+   //  		mpp[arr[i-x+1][j]]--;
+   //  		mini = mpp.begin()->first;
+			// prec[0] -= mini;
+			// prec[x] += mini;
+
+   //  	}
+
+   //  	arr[0][j] += prec[0];
+   //  	FOR(i,1,r){
+   //  		prec[i] += prec[i-1];
+   //  		arr[i][j] += prec[j];
+   //  	}
+
+
+
+
+   //  }
     
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
 
-    cup = (cup + 4)/5;
+    for(int j = 0; j < c; j++ ){
+    	map<int , int> mpp;
+    	
+	 	
+	 	FOR(i,0,x){
+	 		mpp[arr[i][j]]++;
+	 	}
 
-    med = (med + 9)/10;
-   
+	 	int mini = mpp.begin()->first;
+	 	FOR(k , 0 , x){
+	 		arr[]
+	 	}
+	 	
 
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
+	 	FOR(i,x,r){
+	 		mpp[arr[i][j]]++;
+	 		mpp[arr[i-x+1][j]]--;
+	 		mini = mpp.begin()->first;
+		
+	 	}
+
+	 	
 
 
 
-    /*
+    }
 
-        1 1 3
-        2 3 4
-        2
 
-    */
-        
-    
-
-    
-    
-        
 
 
 }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
@@ -102,7 +149,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

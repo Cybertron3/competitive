@@ -43,49 +43,61 @@ ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b 
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
 
+void solve() {
 
-void solve(){
+    int n , m ; cin >> n >> m;
+    ll k ; cin >> k;
+    std::vector<int> a(n) , b(m);
+    
+    
+    FOR(i,0,n) cin >> a[i];
+    FOR(i,0,m) cin >> b[i];
 
-    int a[3] , b[3];
+    ll cnt = 0;
 
-    FOR(i,0,3){
-        cin >> a[i];
+    map<int , int> mpp;
+
+    // int mn = min(n , m) + 1;
+    // while(mn % n != mn % m ){
+    // 	mn++;
+    // }
+
+    int mn = max(m , n);
+
+    // cout << mn << "\n";
+
+    FOR(i , 0 , mn){
+    	if(a[i % n] != b[i % m]){
+    		cnt++;
+    		mpp[cnt] = i + 1;
+    	}
     }
 
-    FOR(i,0,3)cin >> b[i];
+    ll ans , tmp;
 
-    int n; cin >> n;
-    
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
+    tmp = k / cnt;
+    ans = tmp*mn;
 
-    cup = (cup + 4)/5;
+    tmp = k % cnt;
 
-    med = (med + 9)/10;
-   
+    if(tmp == 0){
+    	ans -= mn;
+    	ans += mpp[cnt];
+    	cout << ans << "\n";
+    }else{
+	    ans += mpp[tmp];
 
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
+	    cout << ans  << "\n";
+	}
 
 
-
-    /*
-
-        1 1 3
-        2 3 4
-        2
-
-    */
-        
-    
 
     
-    
-        
+
 
 
 }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 

@@ -43,68 +43,51 @@ ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b 
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
 
+// void solve() {
 
-void solve(){
-
-    int a[3] , b[3];
-
-    FOR(i,0,3){
-        cin >> a[i];
-    }
-
-    FOR(i,0,3)cin >> b[i];
-
-    int n; cin >> n;
+//     int n ; cin >> n;
+//     std::vector<int> arr(n);
     
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
-
-    cup = (cup + 4)/5;
-
-    med = (med + 9)/10;
-   
-
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
-
-
-
-    /*
-
-        1 1 3
-        2 3 4
-        2
-
-    */
-        
+//     for(auto &a : arr){
+//         cin >> a;
+//     }
     
 
-    
-    
-        
 
 
-}
+// }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
-        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+    //     freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    // #endif
 
-    // time_t start , end;
+    // // time_t start , end;
 
-    // time(&start);
+    // // time(&start);
 
-    int t = 1;
+    // int t = 1;
     // cin >> t;
-    while (t--) {
-        solve();
+    // while (t--) {
+    //     solve();
+    // }
+
+    string str;
+
+    for(int i = 0; i > 1e6; i++){
+    	str = "./RunME ";
+    	char num[100] ;
+    	itoa(i , num , 10 );
+
+    	str = str + num;
+
+    	system(str );
     }
 
 

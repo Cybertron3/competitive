@@ -43,49 +43,34 @@ ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b 
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
 
+void solve() {
 
-void solve(){
+    ll a , b , w;
+    cin >> a >> b >> w;
 
-    int a[3] , b[3];
+    w *= 1000;
+    int ans = 0;
 
-    FOR(i,0,3){
-        cin >> a[i];
-    }
+   	ll mini = INT_MAX , maxi = INT_MIN ;
+   	ll end = cdiv(w , a) + 10;
+   	ll i = w / b;
 
-    FOR(i,0,3)cin >> b[i];
-
-    int n; cin >> n;
-    
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
-
-    cup = (cup + 4)/5;
-
-    med = (med + 9)/10;
+   	for( i = max((ll)1 , i-10) ; i <= end ; i++){
+   		double tmp = (double) w / i;
+   		if(tmp >= a && tmp <= b ){
+   			mini = min(mini , i);
+   			maxi = max(maxi , i);
+   		}
+   	}
    
+   	if(maxi == INT_MIN)cout << "UNSATISFIABLE";
 
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
+   	else cout << mini << " " << maxi << "\n";
 
-
-
-    /*
-
-        1 1 3
-        2 3 4
-        2
-
-    */
-        
-    
-
-    
-    
-        
 
 
 }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 

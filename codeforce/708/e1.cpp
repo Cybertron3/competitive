@@ -42,50 +42,51 @@ const int N = 1e5 + 10 , mod =  1000000007;
 ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
+ll fun(ll x){
+	ll i = 2;
+	while(i*i <= x){
+		while(x % (i*i) == 0){
+			x /= (i*i);
+		}
 
+		i++;
+	}
 
-void solve(){
+	return x;
+}
 
-    int a[3] , b[3];
+void solve() {
 
-    FOR(i,0,3){
-        cin >> a[i];
+    ll n  , k; cin >> n >> k;
+    std::vector<ll> arr(n);
+    
+    for(auto &a : arr){
+        cin >> a;
     }
 
-    FOR(i,0,3)cin >> b[i];
+    set<int> sss;
+    ll key;
 
-    int n; cin >> n;
-    
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
+    int ans = 1;
 
-    cup = (cup + 4)/5;
+    FOR(i,0,n){
+ 	   	key = fun(arr[i]);
 
-    med = (med + 9)/10;
-   
+ 	   	if(sss.find(key) == sss.end()){
+ 	   		sss.insert(key);
+ 	   	}else{
+ 	   		sss.clear();
+ 	   		sss.insert(key);
+ 	   		ans++;
+ 	   	}
 
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
-
-
-
-    /*
-
-        1 1 3
-        2 3 4
-        2
-
-    */
-        
+    }
     
 
-    
-    
-        
-
+    cout << ans << "\n";
 
 }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
@@ -102,7 +103,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }

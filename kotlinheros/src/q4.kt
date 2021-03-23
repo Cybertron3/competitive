@@ -7,42 +7,74 @@ fun main() {
 
     while (t-- != 0) {
 
-        var n = readInt()
-        var inputarr = readInts()
+        var arr = readInts()
+        var x  = arr[0].toLong()
+        var y  = arr[1].toLong()
 
-        val pairarr = ArrayList<Pair<Int , Int>>()
-        var  i = 0
-        while(i < n){
-            pairarr.add(Pair(i , inputarr[i]))
-            i++
+        var steps : Long = 0
+
+        var tmp : Long = x.toLong()
+
+        while(tmp*10 <= y){
+            tmp *= 10
         }
-        val arr = pairarr.sortedWith(compareBy({ it.second }, { it.first }))
 
-        var j = n
-        i = 0
+        while(  y >= x ){
 
-        val ans = ArrayList<Int>()
-        ans.add(arr[n-1].first)
-        j--
-        while(i != j){
-            var till = arr[i].second
-            till--
-            var itr= 0
-            while(itr < till && j-1 > i){
-                ans.add(arr[j-1].first)
-                itr++
-                j--
+            while ( tmp > y && tmp != x  ){
+                tmp /= 10
+
             }
-            ans.add(arr[i].first)
-            i++
+
+            if(tmp <= y ){
+                steps++
+                y -= tmp
+            }else break
         }
 
-        i = 0
-        while (i < n ){
-            print("${ans[i] + 1} " )
-            i++
-        }
-        println()
+        steps += y
+        println(steps)
+
+
+
+
+
+//        var n = readInt()
+//        var inputarr = readInts()
+//
+//        val pairarr = ArrayList<Pair<Int , Int>>()
+//        var  i = 0
+//        while(i < n){
+//            pairarr.add(Pair(i , inputarr[i]))
+//            i++
+//        }
+//        val arr = pairarr.sortedWith(compareBy({ it.second }, { it.first }))
+//
+//        var j = n
+//        i = 0
+//
+//        val ans = ArrayList<Int>()
+//        ans.add(arr[n-1].first)
+//        j--
+//        while(i != j){
+//            var till = arr[i].second
+//            till--
+//            var itr= 0
+//            while(itr < till && j-1 > i){
+//                ans.add(arr[j-1].first)
+//                itr++
+//                j--
+//            }
+//            ans.add(arr[i].first)
+//            i++
+//        }
+//
+//        i = 0
+//        while (i < n ){
+//            print("${ans[i] + 1} " )
+//            i++
+//        }
+//        println()
 
 
     }

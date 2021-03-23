@@ -1,63 +1,102 @@
-//It doesn't matter as long as you rise to the top - Katsuki Bakugo
 #include<bits/stdc++.h>
 using namespace std;
-     
-     
-#define Fast_as_duck ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
-#define pb push_back 
-#define forn(i,st,n) for(int i = st; i < n ; i++)
-#define rev(i,st,n) for(int i = st; i >= n ; i--)
+
+using ll = long long ;
+using pii = pair<int , int>;
+using pll = pair<ll, ll>;
+
+
+//pairs
 #define ss second
 #define ff first
-#define ll long long 
 
-typedef pair <int , int> pii;
+
+// vectors
+#define sz(x) (int)(x).size()
+#define all(x) begin(x), end(x)
+#define rall(x) (x).rbegin(), (x).rend()
+#define sor(x) sort(all(x))
+#define rsz resize
+#define ins insert
+#define ft front()
+#define bk back()
+#define pf push_front
+#define pb push_back
+#define eb emplace_back
+#define lb lower_bound
+#define ub upper_bound
+
+// loops
+#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
+#define F0R(i,a) FOR(i,0,a)
+#define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define R0F(i,a) ROF(i,0,a)
+#define trav(a,x) for (auto& a: x)
+
+//arrays
+#define mem(x , y) memset(x , y , sizeof(x) )
 
 const int N = 1e5 + 10 , mod =  1000000007;
 
-void solve(){
+//helper funcs
+ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b rounded up
+ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
-    int n; cin >> n;
-    int arr[n];
-    forn(i,0,n){
-        cin >> arr[i];
-        
+
+void solve() {
+
+    int n ; cin >> n;
+    std::vector<int> arr(n);
+    
+    for(auto &a : arr){
+        cin >> a;
     }
     
+    int ans = 0 , cnt = 2;
 
+    for(int i = 1; i < n-1; i++){
+    	if(arr[i] - arr[i+1] == arr[i] - arr[i-1] ){
+    		cnt++;
+    	}else{
+    		ans = max(cnt  , ans );
+    		cnt = 2;
+    	}
+    }
 
-    
-    
+    ans = max(ans , cnt);
 
-    
-    
-        
+    cout << ans << "\n";
 
 
 }
 
-int main(){
-    Fast_as_duck;
+int main() {
+    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-/*
+
+
+
     #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
+        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
     #endif
-*/
-    int t = 1; 
-    
-    cin >> t;
-    
 
-    while(t--){
+    // time_t start , end;
+
+    // time(&start);
+
+    int t = 1;
+    // cin >> t;
+    while (t--) {
         solve();
     }
 
 
+    // time(&end);
 
+    // printf("time: %f", (double)end - start );
 
     return 0;
 }
-      
-       
+
+

@@ -43,49 +43,33 @@ ll cdiv(ll a, ll b) { return a / b + ((a ^ b) > 0 && a % b); } // divide a by b 
 ll fdiv(ll a, ll b) { return a / b - ((a ^ b) < 0 && a % b); } // divide a by b rounded down
 
 
+void solve() {
 
-void solve(){
-
-    int a[3] , b[3];
-
-    FOR(i,0,3){
-        cin >> a[i];
+    int n ; cin >> n;
+    std::vector<int> a(n+1)  , b(n+1);
+    
+    b[0] = 0;
+    FOR(i,1,n+1){
+    	cin >> a[i] >> b[i];
     }
 
-    FOR(i,0,3)cin >> b[i];
-
-    int n; cin >> n;
+    int tm[n+1];
+    tm[0] = 0;
+    FOR(i,1,n+1) cin >> tm[i];
     
-    int med = b[0] + b[1] + b[2];
-    int cup = a[0] + a[1] + a[2];
+    int curr = 0 , ext;
+    FOR(i,1,n){
+    	ext = cdiv(b[i] -  a[i], 2);
+    	curr += (tm[i] + a[i] - b[i-1]);
 
-    cup = (cup + 4)/5;
+    	curr = max(curr + ext , b[i]);
 
-    med = (med + 9)/10;
-   
+    }
 
-    if(cup + med <= n){
-        cout << "YES\n";
-    }else cout << "NO\n";
-
-
-
-    /*
-
-        1 1 3
-        2 3 4
-        2
-
-    */
-        
-    
-
-    
-    
-        
-
+    cout << curr + tm[n] + a[n] - b[n-1] << "\n";
 
 }
+
 int main() {
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
@@ -102,7 +86,7 @@ int main() {
     // time(&start);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
         solve();
     }
