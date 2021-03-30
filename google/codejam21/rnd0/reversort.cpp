@@ -51,9 +51,28 @@ void solve() {
     for(auto &a : arr){
         cin >> a;
     }
+
+    ll ans = 0;
+
+    for(int i = 0; i < n - 1; i++){
+    	int mini = i;
+    	for(int j = i; j < n ; j++){
+    		if(arr[mini] > arr[j]){
+    			mini = j;
+    		}
+    	}
+
+    	ans += (mini - i + 1);
+
+    	// cout << mini - i + 1 << " ";
+
+    	for(int j = 0 ; j < (mini - i + 1)/2 ; j++){
+    		swap(arr[i+j] , arr[mini- j]);
+    	}
+    }
     
 
-
+    cout << ans << "\n";
 
 }
 
@@ -63,10 +82,10 @@ int main() {
 
 
 
-    #ifndef ONLINE_JUDGE
-        freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
-        freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    //     freopen("/home/ankitesh/Desktop/competitive/input.txt", "r", stdin);
+    //     freopen("/home/ankitesh/Desktop/competitive/output.txt", "w", stdout);
+    // #endif
 
     // time_t start , end;
 

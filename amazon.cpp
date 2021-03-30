@@ -54,20 +54,13 @@ void solve() {
 
     sort(arr.begin() , arr.end());
 
-    int ans = 0 , rk = 0;
+    int three[n+1] , ten[n+1];
+    memset(three , 0 , sizeof(three));
+    memset(ten , 0 , sizeof(ten));
 
     for(int i = 0; i < n; i++){
-    	if(i+1 > rank)break;
-    	ans++;
-    	while(i +1 < n && arr[i] == arr[i+1]){
-    		ans++;
-    		i++;
-    	}
+    	
     }
-
-   
-
-    cout << ans << "\n";
 
 
 
